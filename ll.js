@@ -105,34 +105,49 @@ class LinkedList {
             this.lis = left.concat(right);
         }
     }
+
+    removateAt(index) {
+        if( index >= this.size()) {
+            this.pop();
+        } else if(index == 0) {
+            this.lis.shift();
+        } else {
+            let left = this.lis.slice(0, index);
+            let right = this.lis.slice(index + 1, this.size());
+            left[left.length-1].nextNode = right[0];
+            this.lis = left.concat(right);
+        }
+    }
 }
 
-let list = new LinkedList();
+// let list = new LinkedList();
 
-// console.log(list)
+// // console.log(list)
+// // list.toString();
+// // console.log(`head is ${list.retHead()}`);
+// // console.log(`tail is ${list.retTail()}`);
+// // console.log(`size is: ${list.size()}`);
+// list.append("dog");
+// list.append("cat");
+// list.prepend("parrot");
+// list.append("hamster");
+// list.append("snake");
+// list.append("turtle");
+// // console.log(`size is: ${list.size()}`);
+// // console.log(`head is ${list.retHead()}`);
+// // console.log(`tail is ${list.retTail()}`);
+// // console.log(`${list.retAt(3).value} is at index 3`);
+// // // // console.log(list)
+// // console.log(list.contains('turtle'));
+// // console.log(`turtle index is ${list.findIndex('turtle')}`);
 // list.toString();
-// console.log(`head is ${list.retHead()}`);
-// console.log(`tail is ${list.retTail()}`);
-// console.log(`size is: ${list.size()}`);
-list.append("dog");
-list.append("cat");
-list.prepend("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
-// console.log(`size is: ${list.size()}`);
-// console.log(`head is ${list.retHead()}`);
-// console.log(`tail is ${list.retTail()}`);
-// console.log(`${list.retAt(3).value} is at index 3`);
-// // // console.log(list)
-// console.log(list.contains('turtle'));
-// console.log(`turtle index is ${list.findIndex('turtle')}`);
-list.toString();
-// list.pop();
-// console.log(list.contains('turtle'));
-// console.log(`turtle index is ${list.findIndex('turtle')}`);
+// // list.pop();
+// // console.log(list.contains('turtle'));
+// // console.log(`turtle index is ${list.findIndex('turtle')}`);
+// // list.toString();
+// // console.log(list)
+// list.insertAt('iguana', 3);
 // list.toString();
-// console.log(list)
-list.insertAt('iguana', 3);
-list.toString();
+// list.removateAt(3);
+// list.toString();
 
