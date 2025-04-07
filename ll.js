@@ -87,8 +87,24 @@ class LinkedList {
                 str += ` -> (${this.lis[i].nextNode})`;
             }
             console.log(str);
-         }
         }
+    }
+
+    insertAt(value, index) {
+        if(index >= this.size()) {
+            this.append(value);
+        } else if(index == 0) {
+            this.prepend(value);            
+        } else {
+            let newNode = new Node(value);
+            let left = this.lis.slice(0, index);
+            let right = this.lis.slice (index, this.size());
+            left[left.length-1].nextNode = newNode;
+            newNode.nextNode = right[0];
+            left.push(newNode);
+            this.lis = left.concat(right);
+        }
+    }
 }
 
 let list = new LinkedList();
@@ -98,12 +114,12 @@ let list = new LinkedList();
 // console.log(`head is ${list.retHead()}`);
 // console.log(`tail is ${list.retTail()}`);
 // console.log(`size is: ${list.size()}`);
-// list.append("dog");
-// list.append("cat");
-// list.prepend("parrot");
-// list.append("hamster");
-// list.append("snake");
-// list.append("turtle");
+list.append("dog");
+list.append("cat");
+list.prepend("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 // console.log(`size is: ${list.size()}`);
 // console.log(`head is ${list.retHead()}`);
 // console.log(`tail is ${list.retTail()}`);
@@ -111,10 +127,12 @@ let list = new LinkedList();
 // // // console.log(list)
 // console.log(list.contains('turtle'));
 // console.log(`turtle index is ${list.findIndex('turtle')}`);
-// list.toString();
+list.toString();
 // list.pop();
 // console.log(list.contains('turtle'));
 // console.log(`turtle index is ${list.findIndex('turtle')}`);
 // list.toString();
 // console.log(list)
+list.insertAt('iguana', 3);
+list.toString();
 
